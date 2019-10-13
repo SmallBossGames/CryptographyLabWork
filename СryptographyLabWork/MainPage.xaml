@@ -1,0 +1,31 @@
+﻿<Page
+    x:Class="СryptographyLabWork.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:СryptographyLabWork"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <NavigationView x:Name="MainNavView"
+                        Header="Защита информации"
+                        ItemInvoked="MainNavView_ItemInvoked"
+                        BackRequested="MainNavView_BackRequested"
+                        Loaded="MainNavView_Loaded"
+                        IsSettingsVisible="False">
+            <NavigationView.MenuItems>
+                <NavigationViewItem Tag="lab1" Content="Лабораторная 1" x:Name="Lab1ViewItem" Icon="Document"/>
+                <NavigationViewItem Tag="lab2" Content="Лабораторная 2" x:Name="Lab2ViewItem" Icon="Document"/>
+                <NavigationViewItem Tag="lab3" Content="Лабораторная 3" x:Name="Lab3ViewItem" Icon="Document"/>
+                <NavigationViewItem Tag="lab4" Content="Лабораторная 4" x:Name="Lab4ViewItem" Icon="Document"/>
+            </NavigationView.MenuItems>
+            <ScrollViewer>
+                <Frame x:Name="ContentFrame" Padding="12,0,12,24" IsTabStop="True"
+                   NavigationFailed="ContentFrame_NavigationFailed"/>
+            </ScrollViewer>
+        </NavigationView>
+
+    </Grid>
+</Page>
