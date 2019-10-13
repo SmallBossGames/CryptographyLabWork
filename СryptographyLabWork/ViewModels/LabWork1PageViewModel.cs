@@ -13,32 +13,29 @@ namespace СryptographyLabWork.ViewModels
         private string encodingKey;
         private string sourceText;
         private string encodedText;
-        private KeyValuePair<string, ProcessingMode> processingModeItem;
 
         public LabWork1PageViewModel()
         {
-            ProcessingModes = new List<KeyValuePair<string, ProcessingMode>>(2)
+            EncryptionAlgorithms = new List<Tuple<string, EncryptionAlgorithm>>(2)
             {
-                KeyValuePair.Create("Кодирование", ProcessingMode.Encoding),
-                KeyValuePair.Create("Декодирование", ProcessingMode.Decoding),
+                Tuple.Create("Смещением", EncryptionAlgorithm.Offset),
+                Tuple.Create("Заменой", EncryptionAlgorithm.ViginerSwap),
+            };
+
+            ProcessingModes = new List<Tuple<string, ProcessingMode>>(2)
+            {
+                Tuple.Create("Кодирование", ProcessingMode.Encoding),
+                Tuple.Create("Декодирование", ProcessingMode.Decoding),
             };
 
             ProcessingModeItem = ProcessingModes[0];
+            EncryptionAlgorithmItem = EncryptionAlgorithms[0];
 
             EncodingKey = SourceText = ProcessedText = string.Empty;
         }
 
-        public List<KeyValuePair<string, ProcessingMode>> ProcessingModes { get; }
-
-        public KeyValuePair<string, ProcessingMode> ProcessingModeItem
-        {
-            get => processingModeItem;
-            set
-            {
-                processingModeItem = value;
-                OnPropertyChanged(nameof(ProcessingMode));
-            }
-        }
+        public List<Tuple<string, ProcessingMode>> ProcessingModes { get; }
+        public List<Tuple<string, EncryptionAlgorithm>> EncryptionAlgorithms { get; }
 
         public string EncodingKey
         {
@@ -70,6 +67,10 @@ namespace СryptographyLabWork.ViewModels
             }
         }
 
+        public Tuple<string, ProcessingMode> ProcessingModeItem { get; set; }
+
+        public Tuple<string, EncryptionAlgorithm> EncryptionAlgorithmItem { get; set; }
+
         public void ProcessSource()
         {
             if (string.IsNullOrEmpty(EncodingKey))
@@ -78,13 +79,33 @@ namespace СryptographyLabWork.ViewModels
                 return;
             }
 
-            switch (ProcessingModeItem.Value)
+            switch (ProcessingModeItem.Item2)
             {
                 case ProcessingMode.Encoding:
-                    ProcessedText = TextOffsetCryptography.Encryption(SourceText, EncodingKey, Encoding.Unicode);
+                    switch (EncryptionAlgorithmItem.Item2)
+                    {
+                        case EncryptionAlgorithm.Offset:
+                            ProcessedText = TextOffsetCryptography.Encryption(SourceText, EncodingKey, Encoding.Unicode);
+                            break;
+                        case EncryptionAlgorithm.ViginerSwap:
+                            ProcessedText = ViginerEncryption.Encryption(SourceText, EncodingKey);
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 case ProcessingMode.Decoding:
-                    ProcessedText = TextOffsetCryptography.Decryption(SourceText, EncodingKey, Encoding.Unicode);
+                    switch (EncryptionAlgorithmItem.Item2)
+                    {
+                        case EncryptionAlgorithm.Offset:
+                            ProcessedText = TextOffsetCryptography.Decryption(SourceText, EncodingKey, Encoding.Unicode);
+                            break;
+                        case EncryptionAlgorithm.ViginerSwap:
+                            ProcessedText = ViginerEncryption.Decryption(SourceText, EncodingKey);
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 default:
                     break;

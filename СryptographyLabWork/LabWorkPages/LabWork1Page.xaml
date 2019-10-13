@@ -17,10 +17,17 @@
             <TextBox x:Name="EncodingKeyTextBox" Header="Ключ кодирования" Grid.Row="0" 
                      TextChanged="EncodingKeyTextBox_TextChanged"
                      Text="{x:Bind ViewModel.EncodingKey, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <ComboBox x:Name="ProcessingModeComboBox" Header="Режим обработки" 
-                      SelectionChanged="ProcessingModeComboBox_SelectionChanged"
-                      ItemsSource="{x:Bind ViewModel.ProcessingModes}" DisplayMemberPath="Key"
-                      SelectedItem="{x:Bind ViewModel.ProcessingModeItem, Mode=TwoWay}"/>
+            <StackPanel Orientation="Horizontal">
+                <ComboBox x:Name="ProcessingModeComboBox" Header="Режим обработки" 
+                          Margin="0 0 5 0" SelectionChanged="ProcessingModeComboBox_SelectionChanged"
+                          ItemsSource="{x:Bind ViewModel.ProcessingModes}" DisplayMemberPath="Item1"
+                          SelectedItem="{x:Bind ViewModel.ProcessingModeItem, Mode=TwoWay}"/>
+                <ComboBox x:Name="EncryptionAlgorithmComboBox" Header="Алгоритм шифрования" 
+                      SelectionChanged="EncryptionAlgorithmComboBox_SelectionChanged"
+                      ItemsSource="{x:Bind ViewModel.EncryptionAlgorithms}" DisplayMemberPath="Item1"
+                      SelectedItem="{x:Bind ViewModel.EncryptionAlgorithmItem, Mode=TwoWay}"/>
+            </StackPanel>
+            
         </StackPanel>
 
         <Grid Grid.Row="1">

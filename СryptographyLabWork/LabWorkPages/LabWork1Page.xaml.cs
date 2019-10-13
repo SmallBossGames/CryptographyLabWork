@@ -45,5 +45,10 @@ namespace СryptographyLabWork.LabWorkPages
         {
             ViewModel.ProcessSource();
         }
+
+        private void EncryptionAlgorithmComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ViewModel.ProcessSource();
+        }
     }
 }

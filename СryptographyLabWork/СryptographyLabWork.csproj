@@ -116,8 +116,10 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\EncryptionAlgorithm.cs" />
     <Compile Include="Algorithms\ProcessingMode.cs" />
     <Compile Include="Algorithms\TextOffsetCryptography.cs" />
+    <Compile Include="Algorithms\ViginerEncryption.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
