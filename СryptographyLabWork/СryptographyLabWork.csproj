@@ -123,11 +123,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LabWorkPages\LabWork1Page.xaml.cs">
+    <Compile Include="LabWorkPages\LabWork1Page.cs">
       <DependentUpon>LabWork1Page.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LabWorkPages\LabWork2Page.xaml.cs">
-      <DependentUpon>LabWork2Page.xaml</DependentUpon>
+    <Compile Include="LabWorkPages\LabWork3Page.cs">
+      <DependentUpon>LabWork3Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -160,7 +160,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LabWorkPages\LabWork2Page.xaml">
+    <Page Include="LabWorkPages\LabWork3Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

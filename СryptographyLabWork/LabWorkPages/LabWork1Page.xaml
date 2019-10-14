@@ -35,13 +35,24 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBox Grid.Column="0" Grid.Row="1" Margin="0 0 5 0" AcceptsReturn="True" TextWrapping="Wrap" 
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Column="0" Grid.Row="0" Margin="0 0 5 0" AcceptsReturn="True" TextWrapping="Wrap" 
                      x:Name="SourceTextBox" Header="Исходный текст"
                      Text="{x:Bind ViewModel.SourceText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      TextChanged="SourceTextBox_TextChanged"/>
-            <TextBox Grid.Column="1" Grid.Row="1" Margin="5 0 0 0" AcceptsReturn="True" TextWrapping="Wrap"
+            <TextBox Grid.Column="1" Grid.Row="0" Margin="5 0 0 0" AcceptsReturn="True" TextWrapping="Wrap"
                      x:Name="ProcessedTextBox" Header="Обработанный текст" IsReadOnly="True"
                      Text="{x:Bind ViewModel.ProcessedText, Mode=OneWay}"/>
+            <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal">
+                <Button x:Name="LoadSourceButton" Click="LoadSourceButton_Click" Content="Загрузить из файла" Margin="0 5 5 0"></Button>
+                <Button x:Name="SaveSourceButton" Click="SaveSourceButton_Click" Content="Сохранить в файл" Margin="0 5 5 0"></Button>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+                <Button x:Name="SaveProducedButton" Click="SaveProducedButton_Click" Content="Сохранить в файл" Margin="5 5 5 0"></Button>
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>

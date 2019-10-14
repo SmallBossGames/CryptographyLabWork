@@ -89,7 +89,7 @@ namespace СryptographyLabWork
         private void MainNavView_Loaded(object sender, RoutedEventArgs e)
         {
             pages.Add(("lab1", typeof(LabWorkPages.LabWork1Page)));
-            pages.Add(("lab2", typeof(LabWorkPages.LabWork2Page)));
+            pages.Add(("lab2", typeof(LabWorkPages.LabWork3Page)));
 
 
             ContentFrame.Navigated += On_Navigated;
