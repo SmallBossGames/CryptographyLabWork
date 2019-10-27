@@ -116,6 +116,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\CustomEncoding.cs" />
     <Compile Include="Algorithms\EncryptionAlgorithm.cs" />
     <Compile Include="Algorithms\ProcessingMode.cs" />
     <Compile Include="Algorithms\TextOffsetCryptography.cs" />

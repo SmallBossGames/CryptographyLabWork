@@ -9,26 +9,40 @@ namespace СryptographyLabWork.Algorithms
     {
         public static string Encryption(string source, string key, Encoding encoding)
         {
-            var tempSourceByteArray = encoding.GetBytes(source);
-            var tempKeyArray = encoding.GetBytes(key);
+            var enc = CustomEncoding.Singleton;
+            var resultChars = new char[source.Length];
 
-            for (int i = 0; i < tempSourceByteArray.Length; i++)
+            for (int i = 0; i < source.Length; i++)
             {
-                tempSourceByteArray[i] += tempKeyArray[i % tempKeyArray.Length];
+                var sourceCode = enc.ToUInt16(source[i]);
+                var keyCode = enc.ToUInt16(key[i % key.Length]);
+
+                var code = (ushort)((sourceCode + keyCode) % enc.Count);
+                resultChars[i] = enc.ToChar(code);
             }
-            return encoding.GetString(tempSourceByteArray);
+
+            return new string(resultChars);
         }
 
         public static string Decryption(string source, string key, Encoding encoding)
         {
-            var tempSourceByteArray = encoding.GetBytes(source);
-            var tempKeyArray = encoding.GetBytes(key);
+            var enc = CustomEncoding.Singleton;
+            var resultChars = new char[source.Length];
 
-            for (int i = 0; i < tempSourceByteArray.Length; i++)
+            for (int i = 0; i < source.Length; i++)
             {
-                tempSourceByteArray[i] -= tempKeyArray[i % tempKeyArray.Length];
+                var sourceCode = enc.ToUInt16(source[i]);
+                var keyCode = enc.ToUInt16(key[i % key.Length]);
+                
+                if (keyCode > sourceCode)
+                    sourceCode += enc.Count;
+
+                var code = (ushort)(sourceCode - keyCode);
+                
+                resultChars[i] = enc.ToChar(code);
             }
-            return encoding.GetString(tempSourceByteArray);
+
+            return new string(resultChars);
         }
     }
 }
