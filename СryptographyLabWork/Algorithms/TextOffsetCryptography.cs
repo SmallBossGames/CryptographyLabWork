@@ -16,8 +16,7 @@ namespace СryptographyLabWork.Algorithms
             {
                 var sourceCode = enc.ToUInt16(source[i]);
                 var keyCode = enc.ToUInt16(key[i % key.Length]);
-
-                var code = (ushort)((sourceCode + keyCode) % enc.Count);
+                var code = (sourceCode + keyCode) % enc.Count;
                 resultChars[i] = enc.ToChar(code);
             }
 
@@ -33,11 +32,7 @@ namespace СryptographyLabWork.Algorithms
             {
                 var sourceCode = enc.ToUInt16(source[i]);
                 var keyCode = enc.ToUInt16(key[i % key.Length]);
-                
-                if (keyCode > sourceCode)
-                    sourceCode += enc.Count;
-
-                var code = (ushort)(sourceCode - keyCode);
+                var code = (sourceCode - keyCode + enc.Count) % enc.Count;
                 
                 resultChars[i] = enc.ToChar(code);
             }

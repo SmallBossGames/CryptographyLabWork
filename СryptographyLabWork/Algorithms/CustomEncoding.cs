@@ -8,8 +8,8 @@ namespace СryptographyLabWork.Algorithms
 {
     public sealed class CustomEncoding
     {
-        readonly Dictionary<char, ushort> directDict;
-        readonly Dictionary<ushort, char> reverseDict;
+        readonly Dictionary<char, uint> directDict;
+        readonly Dictionary<uint, char> reverseDict;
         readonly ushort count;
 
         static CustomEncoding m_singleton;
@@ -32,16 +32,16 @@ namespace СryptographyLabWork.Algorithms
 
         public ushort Count => count;
 
-        public ushort ToUInt16(char chartacter) 
+        public uint ToUInt16(char chartacter) 
             => directDict[chartacter];
 
-        public char ToChar(ushort code)
+        public char ToChar(uint code)
             => reverseDict[code];
 
-        private static (Dictionary<char, ushort>, Dictionary<ushort, char>, ushort count) BuildEncodingTable()
+        private static (Dictionary<char, uint>, Dictionary<uint, char>, ushort count) BuildEncodingTable()
         {
-            var directDict = new Dictionary<char, ushort>(256);
-            var reverseDict = new Dictionary<ushort, char>(256);
+            var directDict = new Dictionary<char, uint>(256);
+            var reverseDict = new Dictionary<uint, char>(256);
 
             ushort j = 0;
 
@@ -51,28 +51,35 @@ namespace СryptographyLabWork.Algorithms
                 reverseDict[j] = i;
             }
 
-            for (char i = 'a'; i < 'z'; i++, j++)
+            for (char i = 'a'; i <= 'z'; i++, j++)
             {
                 directDict[i] = j;
                 reverseDict[j] = i;
             }
 
-            for (char i = 'A'; i < 'Z'; i++, j++)
+            for (char i = 'A'; i <= 'Z'; i++, j++)
             {
                 directDict[i] = j;
                 reverseDict[j] = i;
             }
 
-            for (char i = 'а'; i < 'я'; i++, j++)
+            for (char i = 'а'; i <= 'я'; i++, j++)
             {
                 directDict[i] = j;
                 reverseDict[j] = i;
             }
 
-            for (char i = 'А'; i < 'Я'; i++, j++)
+            for (char i = 'А'; i <= 'Я'; i++, j++)
             {
                 directDict[i] = j;
                 reverseDict[j] = i;
+            }
+
+            var unincludedChars = new char[] { 'ё', 'Ё', ' ', '~' };
+            for (int i = 0; i < unincludedChars.Length; i++, j++)
+            {
+                directDict[unincludedChars[i]] = j;
+                reverseDict[j] = unincludedChars[i];
             }
 
             return (directDict, reverseDict, j);
