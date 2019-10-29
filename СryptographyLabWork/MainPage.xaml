@@ -16,8 +16,7 @@
                         Loaded="MainNavView_Loaded"
                         IsSettingsVisible="False">
             <NavigationView.MenuItems>
-                <NavigationViewItem Tag="lab1" Content="Лабораторная 1" x:Name="Lab1ViewItem" Icon="Document"/>
-                <NavigationViewItem Tag="lab2" Content="Лабораторная 2" x:Name="Lab2ViewItem" Icon="Document"/>
+                <NavigationViewItem Tag="lab1" Content="Лабораторные 1 и 2" x:Name="Lab1ViewItem" Icon="Document"/>
                 <NavigationViewItem Tag="lab3" Content="Лабораторная 3" x:Name="Lab3ViewItem" Icon="Document"/>
                 <NavigationViewItem Tag="lab4" Content="Лабораторная 4" x:Name="Lab4ViewItem" Icon="Document"/>
             </NavigationView.MenuItems>

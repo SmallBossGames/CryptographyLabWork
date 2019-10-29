@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,7 +44,10 @@ namespace СryptographyLabWork.Algorithms
             var directDict = new Dictionary<char, uint>(256);
             var reverseDict = new Dictionary<uint, char>(256);
 
-            ushort j = 0;
+            directDict.Add('¡', 0);
+            reverseDict.Add(0, '¡');
+
+            ushort j = 1;
 
             for (char i = '!'; i <= '@'; i++, j++)
             {
@@ -75,11 +79,11 @@ namespace СryptographyLabWork.Algorithms
                 reverseDict[j] = i;
             }
 
-            var unincludedChars = new char[] { 'ё', 'Ё', ' ', '~' };
+            var unincludedChars = new char[] { 'ё', 'Ё', ' ', '~'};
             for (int i = 0; i < unincludedChars.Length; i++, j++)
             {
-                directDict[unincludedChars[i]] = j;
-                reverseDict[j] = unincludedChars[i];
+                directDict.Add(unincludedChars[i], j);
+                reverseDict.Add(j, unincludedChars[i]);
             }
 
             return (directDict, reverseDict, j);
