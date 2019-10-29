@@ -46,7 +46,7 @@ namespace СryptographyLabWork.Algorithms
 
             ushort j = 0;
 
-            for (char i = '!'; i <= '@'; i++, j++)
+            for (char i = ' '; i <= '@'; i++, j++)
             {
                 directDict[i] = j;
                 reverseDict[j] = i;
@@ -76,7 +76,7 @@ namespace СryptographyLabWork.Algorithms
                 reverseDict[j] = i;
             }
 
-            var unincludedChars = new char[] { 'ё', 'Ё', ' ', '~'};
+            var unincludedChars = new char[] { 'ё', 'Ё', '~', '\n', '\r' };
             for (int i = 0; i < unincludedChars.Length; i++, j++)
             {
                 directDict.Add(unincludedChars[i], j);

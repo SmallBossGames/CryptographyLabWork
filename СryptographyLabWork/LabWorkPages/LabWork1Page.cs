@@ -37,49 +37,22 @@ namespace СryptographyLabWork.LabWorkPages
 
         private void SourceTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            try
-            {
-                ViewModel.ProcessSource();
-            } catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            ViewModel.ProcessSource();
         }
 
         private void EncodingKeyTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            try
-            {
-                ViewModel.ProcessSource();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            ViewModel.ProcessSource();
         }
 
         private void ProcessingModeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            try
-            {
-                ViewModel.ProcessSource();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            ViewModel.ProcessSource();
         }
 
         private void EncryptionAlgorithmComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            try
-            {
-                ViewModel.ProcessSource();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            ViewModel.ProcessSource();
         }
 
         private async void LoadSourceButton_Click(object sender, RoutedEventArgs e)
