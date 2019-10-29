@@ -44,10 +44,7 @@ namespace СryptographyLabWork.Algorithms
             var directDict = new Dictionary<char, uint>(256);
             var reverseDict = new Dictionary<uint, char>(256);
 
-            directDict.Add('¡', 0);
-            reverseDict.Add(0, '¡');
-
-            ushort j = 1;
+            ushort j = 0;
 
             for (char i = '!'; i <= '@'; i++, j++)
             {

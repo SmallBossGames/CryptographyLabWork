@@ -44,6 +44,6 @@ namespace СryptographyLabWork.Algorithms
             => charCode < keyCharCode ? encoding.Count + charCode - keyCharCode : charCode - keyCharCode;
 
         private static uint GetDirectExchangingCode(uint charCode, uint keyCharCode, CustomEncoding encoding)
-            => charCode > encoding.Count - keyCharCode ? charCode - encoding.Count + keyCharCode : charCode + keyCharCode;
+            => charCode >= encoding.Count - keyCharCode ? charCode - encoding.Count + keyCharCode : charCode + keyCharCode;
     }
 }
