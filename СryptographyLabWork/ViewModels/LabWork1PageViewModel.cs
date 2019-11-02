@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using СryptographyLabWork.Algorithms;
+using System.Net.NetworkInformation;
 
 namespace СryptographyLabWork.ViewModels
 {
@@ -18,7 +19,7 @@ namespace СryptographyLabWork.ViewModels
         {
             EncryptionAlgorithms = new List<Tuple<string, EncryptionAlgorithm>>(2)
             {
-                Tuple.Create("Смещением", EncryptionAlgorithm.Offset),
+                Tuple.Create("Гаммированием", EncryptionAlgorithm.Offset),
                 Tuple.Create("Заменой", EncryptionAlgorithm.ViginerSwap),
             };
 
@@ -73,6 +74,12 @@ namespace СryptographyLabWork.ViewModels
 
         public void ProcessSource()
         {
+            if (!CheckDRM())
+            {
+                throw new Exception();
+            }
+
+
             if (string.IsNullOrEmpty(EncodingKey))
             {
                 ProcessedText = SourceText;
@@ -110,6 +117,20 @@ namespace СryptographyLabWork.ViewModels
                 default:
                     break;
             }
+        }
+
+        public static bool CheckDRM()
+        {
+            var targetPhysicalAddress = "E006E652EBC9";
+            var result = NetworkInterface.GetAllNetworkInterfaces();
+
+            foreach (var item in result)
+            {
+                var mac = item.GetPhysicalAddress().ToString();
+                if (targetPhysicalAddress == mac)
+                    return true;
+            }
+            return false;
         }
     }
 }

@@ -9,7 +9,7 @@
   <Identity
     Name="0d5b5654-7a25-4f92-bc68-8d4690099ebb"
     Publisher="CN=SmallBoss"
-    Version="1.0.0.0" />
+    Version="1.0.3.0" />
 
   <mp:PhoneIdentity PhoneProductId="0d5b5654-7a25-4f92-bc68-8d4690099ebb" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 

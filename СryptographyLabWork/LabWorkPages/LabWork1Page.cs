@@ -17,6 +17,7 @@ using Windows.Storage.Pickers;
 using СryptographyLabWork.ViewModels;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Net.NetworkInformation;
 
 // Документацию по шаблону элемента "Пустая страница" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234238
 
