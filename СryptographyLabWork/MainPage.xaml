@@ -18,13 +18,9 @@
             <NavigationView.MenuItems>
                 <NavigationViewItem Tag="lab1" Content="Лабораторные 1 и 2" x:Name="Lab1ViewItem" Icon="Document"/>
                 <NavigationViewItem Tag="lab3" Content="Лабораторная 3" x:Name="Lab3ViewItem" Icon="Document"/>
-                <NavigationViewItem Tag="lab4" Content="Лабораторная 4" x:Name="Lab4ViewItem" Icon="Document"/>
             </NavigationView.MenuItems>
-            <ScrollViewer>
-                <Frame x:Name="ContentFrame" Padding="12,0,12,24" IsTabStop="True"
+            <Frame x:Name="ContentFrame" Padding="12,0,12,24" IsTabStop="True"
                    NavigationFailed="ContentFrame_NavigationFailed"/>
-            </ScrollViewer>
         </NavigationView>
-
     </Grid>
 </Page>

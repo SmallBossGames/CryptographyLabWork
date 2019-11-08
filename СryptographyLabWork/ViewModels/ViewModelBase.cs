@@ -14,5 +14,11 @@ namespace СryptographyLabWork.ViewModels
 
         protected void OnPropertyChanged([CallerMemberName]string propertyName = null) 
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        protected void SetMember<T>(ref T member, T value, [CallerMemberName] string memberName = "")
+        {
+            member = value;
+            OnPropertyChanged(memberName);
+        }
     }
 }
