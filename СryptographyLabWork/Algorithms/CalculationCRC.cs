@@ -48,6 +48,23 @@ namespace СryptographyLabWork.Algorithms
             return (ushort)(crc ^ 0xffff);
         }
 
+        public static byte CalculationCRC8(byte[] sourceBytes)
+        {
+            byte crc = 0xFF;
+
+            for (int i = 0; i < sourceBytes.Length; i++)
+            {
+                crc ^= sourceBytes[i];
+
+                for (int j = 0; j < 8; j++)
+                {
+                    crc = (byte)((crc & 0x80) != 0 ? (crc << 1) ^ 0x31 : crc << 1);
+                }
+            }
+
+            return crc;
+        }
+
         private static uint[] BuildReverseCRC32Table(uint crcRevBase)
         {
             var crcTable = new uint[256];

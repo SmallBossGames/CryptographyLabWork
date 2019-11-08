@@ -54,6 +54,17 @@ namespace СryptographyLabWork.LabWorkPages
         private async void AddCrcMarkButton_Click(object sender, RoutedEventArgs e)
         {
             await ViewModel.AppendCrcMarkAsync();
+            await ViewModel.CheckCRCMarkAync(Dispatcher);
+        }
+
+        private async void CheckMarkButton_Click(object sender, RoutedEventArgs e)
+        {
+            await ViewModel.CheckCRCMarkAync(Dispatcher);
+        }
+
+        private void RemoveMarkButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

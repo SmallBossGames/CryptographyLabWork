@@ -25,13 +25,13 @@
             <ComboBox x:Name="ProcessingModeComboBox" Header="Алгоритм обработки" Margin="0 5 0 0"
                       ItemsSource="{x:Bind ViewModel.ProcessingAlgorythms}" DisplayMemberPath="Item1"
                       SelectedItem="{x:Bind ViewModel.ProcessingAlgorythmItem, Mode=TwoWay}"/>
-            <TextBox Header="Значение CRC метки"/>
-            <TextBox Header="Значение CRC вычисленное"/>
-            <TextBox Header="Результат проверки файла"/>
+            <TextBox Header="Значение CRC метки" IsReadOnly="True" Text="{x:Bind ViewModel.LoadedCrcValue, Mode=OneWay}"/>
+            <TextBox Header="Значение CRC вычисленное" IsReadOnly="True" Text="{x:Bind ViewModel.CalculatedCrc, Mode=OneWay}"/>
+            <TextBox Header="Результат проверки файла" IsReadOnly="True" Text="{x:Bind ViewModel.CRCCheckResult, Mode=OneWay}"/>
             <StackPanel Orientation="Horizontal">
                 <Button Margin="0 5 5 0" x:Name="AddCrcMarkButton" Click="AddCrcMarkButton_Click">Добавить метку CRC</Button>
-                <Button Margin="0 5 5 0">Проверить метку CRC</Button>
-                <Button Margin="0 5 5 0">Удалить метку CRC</Button>
+                <Button Margin="0 5 5 0" x:Name="CheckMarkButton" Click="CheckMarkButton_Click">Проверить метку CRC</Button>
+                <!--<Button Margin="0 5 5 0" x:Name="RemoveMarkButton" Click="RemoveMarkButton_Click">Удалить метку CRC</Button>-->
             </StackPanel>
         </StackPanel>
     </ScrollViewer>
